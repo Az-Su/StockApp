@@ -15,7 +15,7 @@ class StocksViewController: UIViewController {
         tableView.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
