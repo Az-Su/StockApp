@@ -7,22 +7,24 @@
 
 import UIKit
 
-class StocksViewController: UIViewController {
+final class StocksViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
+        tableView.dataSource = self
+        //        tableView.delegate = self
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         setupConstraints()
         
-        tableView.dataSource = self
     }
 }
 
@@ -35,6 +37,7 @@ extension StocksViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell
+        cell.setBackgroundColor(for: indexPath.row)
         
         return cell
     }
@@ -44,6 +47,7 @@ extension StocksViewController: UITableViewDataSource {
 
 extension StocksViewController {
     private func setupViews() {
+        view.backgroundColor = .systemBackground
         view.addSubview(tableView)
     }
     
