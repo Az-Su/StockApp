@@ -12,33 +12,52 @@ final class StocksViewController: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
-        tableView.dataSource = self
-        //        tableView.delegate = self
         tableView.showsVerticalScrollIndicator = false
         tableView.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         return tableView
     }()
     
+    private var stocks: [Stock] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
         
         setupViews()
         setupConstraints()
         
+        getStocks()
+    }
+    
+    private func getStocks() {
+        let client = Network()
+        let service: StocksServiceProtocol = StocksService(client: client)
+        
+        service.getStocks { [weak self] result in
+            switch result {
+            case .success(let stocks):
+                self?.stocks = stocks
+                self?.tableView.reloadData()
+            case .failure(_):
+                print("Error")
+            }
+        }
     }
 }
 
-//MARK: - TableViewDataSource
+//MARK: - TableViewDataSource and UITableViewDelegate
 
-extension StocksViewController: UITableViewDataSource {
+extension StocksViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        stocks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell
         cell.setBackgroundColor(for: indexPath.row)
-        
+        cell.configure(with: stocks[indexPath.row])
         return cell
     }
 }
@@ -47,7 +66,11 @@ extension StocksViewController: UITableViewDataSource {
 
 extension StocksViewController {
     private func setupViews() {
+        navigationItem.title = "Stocks"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         view.backgroundColor = .systemBackground
+        
         view.addSubview(tableView)
     }
     
