@@ -22,6 +22,7 @@
 		C0C24DAB298AC528008E285A /* StocksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C24DAA298AC528008E285A /* StocksService.swift */; };
 		C0C24DB0298AC6F1008E285A /* StockResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C24DAF298AC6F1008E285A /* StockResponse.swift */; };
 		C0C24DC3298AF0F9008E285A /* StocksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C24DC2298AF0F9008E285A /* StocksRouter.swift */; };
+		C0C24DC5298AF550008E285A /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C24DC4298AF550008E285A /* Assembly.swift */; };
 		C0D094A329743373008359A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D094A229743373008359A4 /* AppDelegate.swift */; };
 		C0D094A729743373008359A4 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D094A629743373008359A4 /* StocksViewController.swift */; };
 		C0D094AC29743374008359A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0D094AB29743374008359A4 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		C0C24DAA298AC528008E285A /* StocksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksService.swift; sourceTree = "<group>"; };
 		C0C24DAF298AC6F1008E285A /* StockResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockResponse.swift; sourceTree = "<group>"; };
 		C0C24DC2298AF0F9008E285A /* StocksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksRouter.swift; sourceTree = "<group>"; };
+		C0C24DC4298AF550008E285A /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		C0D0949F29743373008359A4 /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D094A229743373008359A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0D094A629743373008359A4 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				C028A057298158220012CE9B /* Service */,
 				C09256472979925C00C342B1 /* Extensions */,
+				C0C24DC4298AF550008E285A /* Assembly.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				C0C24DB0298AC6F1008E285A /* StockResponse.swift in Sources */,
 				C07E5E922989B624004B2654 /* NetworkService.swift in Sources */,
 				C0D094A729743373008359A4 /* StocksViewController.swift in Sources */,
+				C0C24DC5298AF550008E285A /* Assembly.swift in Sources */,
 				C09256492979927800C342B1 /* NSObject+Ext.swift in Sources */,
 				C0D094A329743373008359A4 /* AppDelegate.swift in Sources */,
 				C0C24DC3298AF0F9008E285A /* StocksRouter.swift in Sources */,

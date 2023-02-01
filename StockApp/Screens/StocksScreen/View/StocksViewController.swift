@@ -66,7 +66,11 @@ extension StocksViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension StocksViewController {
     private func setupViews() {
+        navigationItem.title = "Stocks"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         view.backgroundColor = .systemBackground
+        
         view.addSubview(tableView)
     }
     
