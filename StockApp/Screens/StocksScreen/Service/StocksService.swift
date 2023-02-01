@@ -7,33 +7,9 @@
 
 import Foundation
 
-enum StocksRouter: Router {
-    case stocks(currency: String, count: String)
-    
-    var baseUrl: String {
-        "https://api.coingecko.com"
-    }
-    
-    var path: String {
-        switch self {
-        case .stocks:
-            return "/api/v3/coins/markets"
-        }
-    }
-    
-    var method: HTTPMethod {
-        switch self {
-        case .stocks:
-            return .get
-        }
-    }
-    
-    var parameters: Parameters {
-        switch self {
-        case .stocks(let currency, let count):
-            return ["vs_currency": currency, "per_page": count]
-        }
-    }
+fileprivate enum Constants {
+    static let currency = "usd"
+    static let count = "100"
 }
 
 protocol StocksServiceProtocol {
@@ -44,11 +20,11 @@ protocol StocksServiceProtocol {
 
 extension StocksServiceProtocol {
     func getStocks(currency: String, completion: @escaping (Result<[Stock], NetworkError>) -> Void) {
-        getStocks(currency: currency, count: "100", completion: completion)
+        getStocks(currency: currency, count: Constants.count, completion: completion)
     }
     
     func getStocks(completion: @escaping (Result<[Stock], NetworkError>) -> Void) {
-        getStocks(currency: "usd", completion: completion)
+        getStocks(currency: Constants.currency, completion: completion)
     }
 }
 
