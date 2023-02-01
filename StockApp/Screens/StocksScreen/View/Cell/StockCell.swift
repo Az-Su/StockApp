@@ -101,6 +101,13 @@ final class StockCell: UITableViewCell {
             }
         })
     }
+    
+    func configure(with stock: Stock){
+        symbolLabel.text = stock.symbol.uppercased()
+        companyLabel.text = stock.name
+        priceLabel.text = "\(stock.price)"
+        procentLabel.text = "\(stock.change)"
+    }
 }
 
 //MARK: - Setup views and constraints methods

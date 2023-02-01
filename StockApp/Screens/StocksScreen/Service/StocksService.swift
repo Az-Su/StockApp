@@ -38,6 +38,18 @@ enum StocksRouter: Router {
 
 protocol StocksServiceProtocol {
     func getStocks(currency: String, count: String, completion: @escaping (Result<[Stock], NetworkError>) -> Void)
+    func getStocks(currency: String, completion: @escaping (Result<[Stock], NetworkError>) -> Void)
+    func getStocks(completion: @escaping (Result<[Stock], NetworkError>) -> Void)
+}
+
+extension StocksServiceProtocol {
+    func getStocks(currency: String, completion: @escaping (Result<[Stock], NetworkError>) -> Void) {
+        getStocks(currency: currency, count: "100", completion: completion)
+    }
+    
+    func getStocks(completion: @escaping (Result<[Stock], NetworkError>) -> Void) {
+        getStocks(currency: "usd", completion: completion)
+    }
 }
 
 final class StocksService: StocksServiceProtocol {
