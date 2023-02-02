@@ -22,7 +22,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var symbolLabel: UILabel = {
         let label = UILabel()
-        label.text = "YNDX"
         label.font = UIFont.bold(size: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -39,7 +38,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var companyLabel: UILabel = {
         let label = UILabel()
-        label.text = "Yandex, LLC"
         label.font = UIFont.semiBold(size: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -47,7 +45,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var priceLabel: UILabel = {
         let label = UILabel()
-        label.text = "4 764,6 ₽"
         label.font = UIFont.semiBold(size: 18)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -55,7 +52,6 @@ final class StockCell: UITableViewCell {
     
     private lazy var procentLabel: UILabel = {
         let label = UILabel()
-        label.text = "+55 ₽ (1,15%)"
         label.textColor = UIColor.backgroundGreen
         label.font = UIFont.semiBold(size: 12)
         label.translatesAutoresizingMaskIntoConstraints = false
