@@ -18,16 +18,6 @@ protocol StocksServiceProtocol {
     func getStocks(completion: @escaping (Result<[Stock], NetworkError>) -> Void)
 }
 
-extension StocksServiceProtocol {
-    func getStocks(currency: String, completion: @escaping (Result<[Stock], NetworkError>) -> Void) {
-        getStocks(currency: currency, count: Constants.count, completion: completion)
-    }
-    
-    func getStocks(completion: @escaping (Result<[Stock], NetworkError>) -> Void) {
-        getStocks(currency: Constants.currency, completion: completion)
-    }
-}
-
 final class StocksService: StocksServiceProtocol {
     private let client: NetworkService
     
@@ -37,5 +27,15 @@ final class StocksService: StocksServiceProtocol {
     
     func getStocks(currency: String, count: String, completion: @escaping (Result<[Stock], NetworkError>) -> Void) {
         client.execute(with: StocksRouter.stocks(currency: currency, count: count), completion: completion)
+    }
+}
+
+extension StocksServiceProtocol {
+    func getStocks(currency: String, completion: @escaping (Result<[Stock], NetworkError>) -> Void) {
+        getStocks(currency: currency, count: Constants.count, completion: completion)
+    }
+    
+    func getStocks(completion: @escaping (Result<[Stock], NetworkError>) -> Void) {
+        getStocks(currency: Constants.currency, completion: completion)
     }
 }
