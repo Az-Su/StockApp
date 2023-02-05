@@ -17,12 +17,15 @@
 		C048751C297A9E8B00B3B653 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048751B297A9E8B00B3B653 /* UIFont+Ext.swift */; };
 		C048751F297AA02400B3B653 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048751E297AA02400B3B653 /* UIColor+Ext.swift */; };
 		C07E5E922989B624004B2654 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E5E912989B624004B2654 /* NetworkService.swift */; };
+		C08A8A47298FE0F50004D152 /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8A46298FE0F50004D152 /* StockModel.swift */; };
+		C08A8A49298FE1530004D152 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8A48298FE1530004D152 /* Double+Ext.swift */; };
 		C09256442978768400C342B1 /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09256432978768400C342B1 /* StockCell.swift */; };
 		C09256492979927800C342B1 /* NSObject+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09256482979927800C342B1 /* NSObject+Ext.swift */; };
 		C0C24DAB298AC528008E285A /* StocksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C24DAA298AC528008E285A /* StocksService.swift */; };
 		C0C24DB0298AC6F1008E285A /* StockResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C24DAF298AC6F1008E285A /* StockResponse.swift */; };
 		C0C24DC3298AF0F9008E285A /* StocksRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C24DC2298AF0F9008E285A /* StocksRouter.swift */; };
 		C0C24DC5298AF550008E285A /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C24DC4298AF550008E285A /* Assembly.swift */; };
+		C0C24DC9298BD086008E285A /* StocksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C24DC8298BD086008E285A /* StocksPresenter.swift */; };
 		C0D094A329743373008359A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D094A229743373008359A4 /* AppDelegate.swift */; };
 		C0D094A729743373008359A4 /* StocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D094A629743373008359A4 /* StocksViewController.swift */; };
 		C0D094AC29743374008359A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0D094AB29743374008359A4 /* Assets.xcassets */; };
@@ -44,12 +47,15 @@
 		C048751B297A9E8B00B3B653 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		C048751E297AA02400B3B653 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		C07E5E912989B624004B2654 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		C08A8A46298FE0F50004D152 /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
+		C08A8A48298FE1530004D152 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
 		C09256432978768400C342B1 /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		C09256482979927800C342B1 /* NSObject+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Ext.swift"; sourceTree = "<group>"; };
 		C0C24DAA298AC528008E285A /* StocksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksService.swift; sourceTree = "<group>"; };
 		C0C24DAF298AC6F1008E285A /* StockResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockResponse.swift; sourceTree = "<group>"; };
 		C0C24DC2298AF0F9008E285A /* StocksRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksRouter.swift; sourceTree = "<group>"; };
 		C0C24DC4298AF550008E285A /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
+		C0C24DC8298BD086008E285A /* StocksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksPresenter.swift; sourceTree = "<group>"; };
 		C0D0949F29743373008359A4 /* StockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0D094A229743373008359A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0D094A629743373008359A4 /* StocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksViewController.swift; sourceTree = "<group>"; };
@@ -112,9 +118,9 @@
 		C07E5E932989BCB1004B2654 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				C0C24DC2298AF0F9008E285A /* StocksRouter.swift */,
 				C0C24DAA298AC528008E285A /* StocksService.swift */,
 				C0C24DAF298AC6F1008E285A /* StockResponse.swift */,
-				C0C24DC2298AF0F9008E285A /* StocksRouter.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -144,6 +150,7 @@
 				C09256482979927800C342B1 /* NSObject+Ext.swift */,
 				C048751B297A9E8B00B3B653 /* UIFont+Ext.swift */,
 				C048751E297AA02400B3B653 /* UIColor+Ext.swift */,
+				C08A8A48298FE1530004D152 /* Double+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -159,9 +166,10 @@
 		C092564B297992F800C342B1 /* StocksScreen */ = {
 			isa = PBXGroup;
 			children = (
-				C0C24DAC298AC68F008E285A /* Model */,
-				C07E5E932989BCB1004B2654 /* Service */,
+				C0C24DC7298BCFCE008E285A /* Model */,
 				C092564F2979937500C342B1 /* View */,
+				C0C24DC6298BCFC0008E285A /* Presenter */,
+				C07E5E932989BCB1004B2654 /* Service */,
 			);
 			path = StocksScreen;
 			sourceTree = "<group>";
@@ -170,17 +178,10 @@
 			isa = PBXGroup;
 			children = (
 				C0D094B029743374008359A4 /* Info.plist */,
+				C0D094AD29743374008359A4 /* LaunchScreen.storyboard */,
 				C0D094A229743373008359A4 /* AppDelegate.swift */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		C092564D2979935800C342B1 /* Storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				C0D094AD29743374008359A4 /* LaunchScreen.storyboard */,
-			);
-			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		C092564E2979936400C342B1 /* Cell */ = {
@@ -200,9 +201,18 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C0C24DAC298AC68F008E285A /* Model */ = {
+		C0C24DC6298BCFC0008E285A /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				C0C24DC8298BD086008E285A /* StocksPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C0C24DC7298BCFCE008E285A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C08A8A46298FE0F50004D152 /* StockModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				C09256462979925700C342B1 /* Core */,
-				C092564D2979935800C342B1 /* Storyboard */,
 				C092564C2979930B00C342B1 /* Application */,
 				C09256452979923700C342B1 /* Resoucres */,
 				C092564A297992EC00C342B1 /* Screens */,
@@ -337,10 +346,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C08A8A47298FE0F50004D152 /* StockModel.swift in Sources */,
+				C0C24DC9298BD086008E285A /* StocksPresenter.swift in Sources */,
 				C0C24DB0298AC6F1008E285A /* StockResponse.swift in Sources */,
 				C07E5E922989B624004B2654 /* NetworkService.swift in Sources */,
 				C0D094A729743373008359A4 /* StocksViewController.swift in Sources */,
 				C0C24DC5298AF550008E285A /* Assembly.swift in Sources */,
+				C08A8A49298FE1530004D152 /* Double+Ext.swift in Sources */,
 				C09256492979927800C342B1 /* NSObject+Ext.swift in Sources */,
 				C0D094A329743373008359A4 /* AppDelegate.swift in Sources */,
 				C0C24DC3298AF0F9008E285A /* StocksRouter.swift in Sources */,

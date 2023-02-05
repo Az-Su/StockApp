@@ -13,22 +13,26 @@ final class Assembly {
     static let assembler: Assembly = .init()
     private init() {}
     
+    private lazy var network: NetworkService = Network()
+    private lazy var stocksService: StocksServiceProtocol = StocksService(client: network)
     
-    func thirdVC() -> UIViewController {
-        UIViewController()
+    private func stocksModule() -> UIViewController {
+        let presenter = StocksPresenter(service: stocksService)
+        let view = StocksViewController(presenter: presenter)
+        presenter.view = view
+        return view
     }
     
-    func tabbarController() -> UIViewController {
+    func tabBarController() -> UIViewController {
         let tabbar = UITabBarController()
         
-        
-        let stocksVC = UINavigationController(rootViewController: StocksViewController())
+        let stocksVC = UINavigationController(rootViewController: stocksModule())
         stocksVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "diagram"), tag: 0)
         
-        let favoriteVC = UINavigationController(rootViewController: StocksViewController())
+        let favoriteVC = UINavigationController(rootViewController: stocksModule())
         favoriteVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "favorite"), tag: 1)
         
-        let searchVC = UINavigationController(rootViewController: StocksViewController())
+        let searchVC = UINavigationController(rootViewController: stocksModule())
         searchVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "search") , tag: 2)
         
         tabbar.viewControllers = [stocksVC, favoriteVC, searchVC]

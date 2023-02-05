@@ -98,11 +98,11 @@ final class StockCell: UITableViewCell {
         })
     }
     
-    func configure(with stock: Stock){
-        symbolLabel.text = stock.symbol.uppercased()
-        companyLabel.text = stock.name
-        priceLabel.text = "\(stock.price)"
-        procentLabel.text = "\(stock.change)"
+    func configure(with model: StockModelProtocol){
+        symbolLabel.text = model.symbol.uppercased()
+        companyLabel.text = model.name
+        priceLabel.text = model.price
+        procentLabel.text = model.change
     }
 }
 
