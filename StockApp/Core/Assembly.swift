@@ -16,6 +16,8 @@ final class Assembly {
     private lazy var network: NetworkService = Network()
     private lazy var stocksService: StocksServiceProtocol = StocksService(client: network)
     
+    let favoritesService: FavoriteServiceProtocol = FavoriteLocalService()
+    
     private func stocksModule() -> UIViewController {
         let presenter = StocksPresenter(service: stocksService)
         let view = StocksViewController(presenter: presenter)
@@ -27,13 +29,13 @@ final class Assembly {
         let tabbar = UITabBarController()
         
         let stocksVC = UINavigationController(rootViewController: stocksModule())
-        stocksVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "diagram"), tag: 0)
+        stocksVC.tabBarItem = UITabBarItem(title: "Stocks", image: UIImage(named: "diagram"), tag: 0)
         
         let favoriteVC = UINavigationController(rootViewController: stocksModule())
-        favoriteVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "favorite"), tag: 1)
+        favoriteVC.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: "favorite"), tag: 1)
         
         let searchVC = UINavigationController(rootViewController: stocksModule())
-        searchVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "search") , tag: 2)
+        searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search") , tag: 2)
         
         tabbar.viewControllers = [stocksVC, favoriteVC, searchVC]
         tabbar.tabBarItem.imageInsets = .init(top: 5, left: 0, bottom: -5, right: 0)

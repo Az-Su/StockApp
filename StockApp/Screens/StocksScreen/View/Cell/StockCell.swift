@@ -76,6 +76,12 @@ final class StockCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        favoriteAction = nil
+    }
+    
     func setBackgroundColor(for row: Int) {
         elementsView.backgroundColor = row % 2 == 0
         ? UIColor.backgroundGray
@@ -103,6 +109,10 @@ final class StockCell: UITableViewCell {
         companyLabel.text = model.name
         priceLabel.text = model.price
         procentLabel.text = model.change
+        favoriteButton.isSelected = model.isFavorite
+        favoriteAction = {
+            model.setFavorite()
+        }
     }
 }
 
