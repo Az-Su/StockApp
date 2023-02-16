@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C01391B6299D34BB008B74F8 /* FavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01391B5299D34BB008B74F8 /* FavoriteService.swift */; };
 		C028A05B298158300012CE9B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A058298158300012CE9B /* Router.swift */; };
 		C028A05C298158300012CE9B /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A059298158300012CE9B /* HTTPMethod.swift */; };
 		C028A05D298158300012CE9B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A05A298158300012CE9B /* NetworkError.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C01391B5299D34BB008B74F8 /* FavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteService.swift; sourceTree = "<group>"; };
 		C028A058298158300012CE9B /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C028A059298158300012CE9B /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		C028A05A298158300012CE9B /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -71,20 +73,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7BB3154A4FA7C00474F78088 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		C028A057298158220012CE9B /* Service */ = {
+		C01391B3299D344B008B74F8 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
 				C028A058298158300012CE9B /* Router.swift */,
 				C028A05A298158300012CE9B /* NetworkError.swift */,
 				C028A059298158300012CE9B /* HTTPMethod.swift */,
 				C07E5E912989B624004B2654 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		C01391B4299D3453008B74F8 /* FavoriteService */ = {
+			isa = PBXGroup;
+			children = (
+				C01391B5299D34BB008B74F8 /* FavoriteService.swift */,
+			);
+			path = FavoriteService;
+			sourceTree = "<group>";
+		};
+		C028A057298158220012CE9B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C01391B4299D3453008B74F8 /* FavoriteService */,
+				C01391B3299D344B008B74F8 /* NetworkService */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -207,7 +219,6 @@
 			children = (
 				C0D094A129743373008359A4 /* StockApp */,
 				C0D094A029743373008359A4 /* Products */,
-				7BB3154A4FA7C00474F78088 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -317,6 +328,7 @@
 				C028A05B298158300012CE9B /* Router.swift in Sources */,
 				C028A05C298158300012CE9B /* HTTPMethod.swift in Sources */,
 				C048751F297AA02400B3B653 /* UIColor+Ext.swift in Sources */,
+				C01391B6299D34BB008B74F8 /* FavoriteService.swift in Sources */,
 				C0C24DAB298AC528008E285A /* StocksService.swift in Sources */,
 				C028A05D298158300012CE9B /* NetworkError.swift in Sources */,
 				C048751C297A9E8B00B3B653 /* UIFont+Ext.swift in Sources */,
