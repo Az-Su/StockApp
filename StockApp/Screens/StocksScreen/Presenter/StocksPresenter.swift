@@ -11,6 +11,7 @@ import UIKit
 //AnyObject only for reference type
 protocol StocksViewProtocol: AnyObject {
     func updateView()
+    func updateCell(for indexPath: IndexPath)
     func updateView(withLoader isLoading: Bool)
     func updateView(withError message: String)
 }
@@ -39,8 +40,13 @@ final class StocksPresenter: StocksPresenterProtocol {
     weak var view: StocksViewProtocol?
     
     func loadView() {
+        startFavoritesNotificationObserving()
+        
+        // Показываем лоадер и идем в сеть
         view?.updateView(withLoader: true)
+        
         service.getStocks { [weak self] result in
+            //Возвращаямся с данными и убираем лоадер
             self?.view?.updateView(withLoader: false)
             
             switch result {
@@ -57,4 +63,16 @@ final class StocksPresenter: StocksPresenterProtocol {
     func model(for indexPath: IndexPath) -> StockModelProtocol {
         stocks[indexPath.row]
     }
+}
+
+extension StocksPresenter: FavoriteUpdateServiceProtocol {
+    func setFavorite(notification: Notification) {
+        guard let id = notification.stockId,
+              let index = stocks.firstIndex(where: { $0.id == id }) else { return }
+        let indexPath = IndexPath(row: index, section: 0)
+        view?.updateCell(for: indexPath)
+        
+    }
+    
+    
 }

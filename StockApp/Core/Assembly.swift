@@ -43,4 +43,11 @@ final class Assembly {
         tabbar.tabBar.backgroundColor = .backgroundGray
         return tabbar
     }
+    
+    func detailVC(for model: StockModelProtocol) -> UIViewController {
+        let presenter = DetailStockPresenter(model: model, service: stocksService)
+        let view = DetailStockViewController(presenter: presenter)
+        presenter.view = view
+        return view
+    }
 }

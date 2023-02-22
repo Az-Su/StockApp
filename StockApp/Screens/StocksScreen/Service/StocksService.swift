@@ -16,6 +16,7 @@ protocol StocksServiceProtocol {
     func getStocks(currency: String, count: String, completion: @escaping (Result<[Stock], NetworkError>) -> Void)
     func getStocks(currency: String, completion: @escaping (Result<[Stock], NetworkError>) -> Void)
     func getStocks(completion: @escaping (Result<[Stock], NetworkError>) -> Void)
+    func getCharts(id: String, currency: String, days: String, isDaily: Bool, completion: @escaping (Result<[Stock], NetworkError>) -> Void)
 }
 
 final class StocksService: StocksServiceProtocol {
@@ -27,6 +28,10 @@ final class StocksService: StocksServiceProtocol {
     
     func getStocks(currency: String, count: String, completion: @escaping (Result<[Stock], NetworkError>) -> Void) {
         client.execute(with: StocksRouter.stocks(currency: currency, count: count), completion: completion)
+    }
+    
+    func getCharts(id: String, currency: String, days: String, isDaily: Bool, completion: @escaping (Result<[Stock], NetworkError>) -> Void) {
+        client.execute(with: StocksRouter.charts(id: id, currency: currency, days: days, isDaily: isDaily), completion: completion)
     }
 }
 

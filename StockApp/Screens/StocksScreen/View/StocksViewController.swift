@@ -54,6 +54,12 @@ extension StocksViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: presenter.model(for: indexPath))
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = presenter.model(for: indexPath)
+        let detailVC = Assembly.assembler.detailVC(for: model)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension StocksViewController: StocksViewProtocol {
@@ -61,12 +67,16 @@ extension StocksViewController: StocksViewProtocol {
         tableView.reloadData()
     }
     
+    func updateCell(for indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    
     func updateView(withLoader isLoading: Bool) {
-        
+        print("Loader is - ", isLoading, " at ", Date())
     }
     
     func updateView(withError message: String) {
-        
+        print("Error - ", message)
     }
 }
 
