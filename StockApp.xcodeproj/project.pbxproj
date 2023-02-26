@@ -14,6 +14,8 @@
 		C01391C2299E5686008B74F8 /* FileManagerFavoriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01391C1299E5686008B74F8 /* FileManagerFavoriteService.swift */; };
 		C01391EA29A686A2008B74F8 /* ChartsResponce.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01391E929A686A2008B74F8 /* ChartsResponce.swift */; };
 		C01391EC29AB56ED008B74F8 /* DetailTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01391EB29AB56ED008B74F8 /* DetailTitleView.swift */; };
+		C01391F129AB59C0008B74F8 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01391F029AB59C0008B74F8 /* FavoriteViewController.swift */; };
+		C01391F329AB5A5B008B74F8 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01391F229AB5A5B008B74F8 /* FavoritePresenter.swift */; };
 		C028A05B298158300012CE9B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A058298158300012CE9B /* Router.swift */; };
 		C028A05C298158300012CE9B /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A059298158300012CE9B /* HTTPMethod.swift */; };
 		C028A05D298158300012CE9B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A05A298158300012CE9B /* NetworkError.swift */; };
@@ -47,6 +49,8 @@
 		C01391C1299E5686008B74F8 /* FileManagerFavoriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerFavoriteService.swift; sourceTree = "<group>"; };
 		C01391E929A686A2008B74F8 /* ChartsResponce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsResponce.swift; sourceTree = "<group>"; };
 		C01391EB29AB56ED008B74F8 /* DetailTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTitleView.swift; sourceTree = "<group>"; };
+		C01391F029AB59C0008B74F8 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		C01391F229AB5A5B008B74F8 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		C028A058298158300012CE9B /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C028A059298158300012CE9B /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		C028A05A298158300012CE9B /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -149,6 +153,31 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		C01391ED29AB599F008B74F8 /* StockFavoriteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C01391EE29AB59AA008B74F8 /* View */,
+				C01391EF29AB59B0008B74F8 /* Presenter */,
+			);
+			path = StockFavoriteScreen;
+			sourceTree = "<group>";
+		};
+		C01391EE29AB59AA008B74F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C01391F029AB59C0008B74F8 /* FavoriteViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C01391EF29AB59B0008B74F8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C01391F229AB5A5B008B74F8 /* FavoritePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		C028A057298158220012CE9B /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +241,7 @@
 		C092564A297992EC00C342B1 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C01391ED29AB599F008B74F8 /* StockFavoriteScreen */,
 				C01391B7299E3DC3008B74F8 /* StockDetailScreen */,
 				C092564B297992F800C342B1 /* StocksScreen */,
 			);
@@ -387,6 +417,7 @@
 				C0D094A329743373008359A4 /* AppDelegate.swift in Sources */,
 				C01391C0299E550F008B74F8 /* FavoriteUpdateService.swift in Sources */,
 				C0C24DC3298AF0F9008E285A /* StocksRouter.swift in Sources */,
+				C01391F129AB59C0008B74F8 /* FavoriteViewController.swift in Sources */,
 				C01391EA29A686A2008B74F8 /* ChartsResponce.swift in Sources */,
 				C028A05B298158300012CE9B /* Router.swift in Sources */,
 				C01391EC29AB56ED008B74F8 /* DetailTitleView.swift in Sources */,
@@ -396,6 +427,7 @@
 				C0C24DAB298AC528008E285A /* StocksService.swift in Sources */,
 				C028A05D298158300012CE9B /* NetworkError.swift in Sources */,
 				C048751C297A9E8B00B3B653 /* UIFont+Ext.swift in Sources */,
+				C01391F329AB5A5B008B74F8 /* FavoritePresenter.swift in Sources */,
 				C09256442978768400C342B1 /* StockCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,6 +567,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y9QHBXLG7J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StockApp/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -561,6 +594,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y9QHBXLG7J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StockApp/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

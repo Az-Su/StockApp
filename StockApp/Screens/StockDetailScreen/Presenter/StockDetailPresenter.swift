@@ -16,7 +16,6 @@ protocol StockDetailViewProtocol: AnyObject {
 protocol StockDetailPresenterProtocol {
     var titleModel: DetailTitleView.TilteModel { get }
     var favoriteButtonIsSelected: Bool { get }
-//    var title: String? { get }
     
     func loadView()
     func favoriteButtonTapped()
@@ -35,10 +34,6 @@ final class StockDetailPresenter : StockDetailPresenterProtocol {
     var favoriteButtonIsSelected: Bool {
         model.isFavorite
     }
-    
-//    var title: String? {
-//        model.name
-//    }
     
     init(model: StockModelProtocol, service: StocksServiceProtocol) {
         self.model = model

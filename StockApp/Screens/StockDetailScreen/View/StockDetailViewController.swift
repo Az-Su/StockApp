@@ -87,6 +87,4 @@ extension StockDetailViewController: StockDetailViewProtocol {
     func updateView(withError message: String) {
         
     }
-    
-    
 }

@@ -71,7 +71,7 @@ final class StockModel: StockModelProtocol {
     func setFavorite() {
         isFavorite.toggle()
         
-        if  isFavorite {
+        if isFavorite {
             favoriteService.save(id: id)
         } else {
             favoriteService.remove(id: id)

@@ -25,13 +25,20 @@ final class Assembly {
         return view
     }
     
+    private func favoriteModule() -> UIViewController {
+        let presenter = FavoritePresenter(service: stocksService)
+        let favoritesVC = FavoriteViewController(presenter: presenter)
+        presenter.view = favoritesVC
+        return favoritesVC
+    }
+    
     func tabBarController() -> UIViewController {
         let tabbar = UITabBarController()
         
         let stocksVC = UINavigationController(rootViewController: stocksModule())
         stocksVC.tabBarItem = UITabBarItem(title: "Stocks", image: UIImage(named: "diagram"), tag: 0)
         
-        let favoriteVC = UINavigationController(rootViewController: stocksModule())
+        let favoriteVC = UINavigationController(rootViewController: favoriteModule())
         favoriteVC.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: "favorite"), tag: 1)
         
         let searchVC = UINavigationController(rootViewController: stocksModule())

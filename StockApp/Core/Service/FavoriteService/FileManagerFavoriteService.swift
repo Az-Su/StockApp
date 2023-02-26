@@ -12,7 +12,6 @@ final class FavoriteLocalService: FavoriteServiceProtocol {
         FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("Favorites")
     }()
     
-    
     private lazy var favoriteIds: [String] = {
         do {
             let data = try Data(contentsOf: path)
