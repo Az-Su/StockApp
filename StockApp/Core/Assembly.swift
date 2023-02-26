@@ -45,8 +45,8 @@ final class Assembly {
     }
     
     func detailVC(for model: StockModelProtocol) -> UIViewController {
-        let presenter = DetailStockPresenter(model: model, service: stocksService)
-        let view = DetailStockViewController(presenter: presenter)
+        let presenter = StockDetailPresenter(model: model, service: stocksService)
+        let view = StockDetailViewController(presenter: presenter)
         presenter.view = view
         return view
     }

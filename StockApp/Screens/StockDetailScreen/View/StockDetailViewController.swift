@@ -1,5 +1,5 @@
 //
-//  DetailStockViewController.swift
+//  StockDetailViewController.swift
 //  StockApp
 //
 //  Created by Sailau Almaz Maratuly on 16.02.2023.
@@ -7,10 +7,16 @@
 
 import UIKit
 
-final class DetailStockViewController: UIViewController {
-    private let presenter: DetailStockPresenterProtocol
+final class StockDetailViewController: UIViewController {
+    private lazy var titleView: UIView = {
+        let view = DetailTitleView()
+        view.configure(with: presenter.titleModel)
+        return view
+    }()
     
-    init(presenter: DetailStockPresenterProtocol) {
+    private let presenter: StockDetailPresenterProtocol
+    
+    init(presenter: StockDetailPresenterProtocol) {
         self.presenter = presenter
         
         super.init(nibName: nil, bundle: nil)
@@ -23,12 +29,15 @@ final class DetailStockViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        title = presenter.title
-        navigationController?.navigationBar.prefersLargeTitles = false
         
+        setupView()
+        setupNavigationBar()
         setupFavoriteButton()
         presenter.loadView()
+    }
+    
+    private func setupView() {
+        view.backgroundColor = .white
     }
     
     private func setupFavoriteButton() {
@@ -40,18 +49,33 @@ final class DetailStockViewController: UIViewController {
         button.isSelected = presenter.favoriteButtonIsSelected
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
+    
+    private func setupNavigationBar() {
+        navigationItem.titleView = titleView
+        let backButton =  UIBarButtonItem(image: UIImage(named: "back"),
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(backBattonTapped))
+        backButton.tintColor = .black
+        navigationItem.leftBarButtonItem = backButton
+    }
 }
 
 //MARK: - Button Actions
 
-extension DetailStockViewController {
+extension StockDetailViewController {
     @objc private func favoriteButtonTapped(sender: UIButton) {
         sender.isSelected.toggle()
         presenter.favoriteButtonTapped()
     }
+    
+    @objc
+    private func backBattonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
-extension DetailStockViewController: DetailStockViewProtocol {
+extension StockDetailViewController: StockDetailViewProtocol {
     func updateView() {
         
     }

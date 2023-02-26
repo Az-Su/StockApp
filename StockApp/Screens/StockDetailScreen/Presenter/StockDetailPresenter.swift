@@ -1,5 +1,5 @@
 //
-//  DetailStockPresenter.swift
+//  StockDetailPresenter.swift
 //  StockApp
 //
 //  Created by Sailau Almaz Maratuly on 16.02.2023.
@@ -7,33 +7,38 @@
 
 import Foundation
 
-protocol DetailStockViewProtocol: AnyObject {
+protocol StockDetailViewProtocol: AnyObject {
     func updateView()
     func updateView(withLoader isLoading: Bool)
     func updateView(withError message: String)
 }
 
-protocol DetailStockPresenterProtocol {
+protocol StockDetailPresenterProtocol {
+    var titleModel: DetailTitleView.TilteModel { get }
     var favoriteButtonIsSelected: Bool { get }
-    var title: String? { get }
+//    var title: String? { get }
     
     func loadView()
     func favoriteButtonTapped()
 }
 
-final class DetailStockPresenter : DetailStockPresenterProtocol {
+final class StockDetailPresenter : StockDetailPresenterProtocol {
     private let model: StockModelProtocol
     private let service: StocksServiceProtocol
     
-    weak var view: DetailStockViewProtocol?
+    weak var view: StockDetailViewProtocol?
+    
+    lazy var titleModel: DetailTitleView.TilteModel = {
+        .from(stockModel: model)
+    }()
     
     var favoriteButtonIsSelected: Bool {
         model.isFavorite
     }
     
-    var title: String? {
-        model.name
-    }
+//    var title: String? {
+//        model.name
+//    }
     
     init(model: StockModelProtocol, service: StocksServiceProtocol) {
         self.model = model
