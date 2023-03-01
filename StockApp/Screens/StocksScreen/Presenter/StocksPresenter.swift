@@ -35,30 +35,28 @@ final class StocksPresenter: StocksPresenterProtocol {
     
     init(service: StocksServiceProtocol, view: StocksViewProtocol? = nil) {
         self.service = service
+        startFavoritesNotificationObserving()
     }
     
     weak var view: StocksViewProtocol?
     
     func loadView() {
-        startFavoritesNotificationObserving()
-        
-        // Показываем лоадер и идем в сеть
+        // Show loader
         view?.updateView(withLoader: true)
         
         service.getStocks { [weak self] result in
-            //Возвращаямся с данными и убираем лоадер
+            //Come back with data and hide loader
             self?.view?.updateView(withLoader: false)
             
             switch result {
             case .success(let stocks):
-                self?.stocks = stocks.map { StockModel(stock: $0) }
+                self?.stocks = stocks
                 self?.view?.updateView()
             case .failure(let error):
                 self?.view?.updateView(withError: error.localizedDescription)
             }
         }
     }
-    
     
     func model(for indexPath: IndexPath) -> StockModelProtocol {
         stocks[indexPath.row]
@@ -71,8 +69,5 @@ extension StocksPresenter: FavoriteUpdateServiceProtocol {
               let index = stocks.firstIndex(where: { $0.id == id }) else { return }
         let indexPath = IndexPath(row: index, section: 0)
         view?.updateCell(for: indexPath)
-        
     }
-    
-    
 }

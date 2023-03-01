@@ -109,6 +109,7 @@ final class StockCell: UITableViewCell {
         companyLabel.text = model.name
         priceLabel.text = model.price
         procentLabel.text = model.change
+        procentLabel.textColor = model.changeColor
         favoriteButton.isSelected = model.isFavorite
         favoriteAction = {
             model.setFavorite()

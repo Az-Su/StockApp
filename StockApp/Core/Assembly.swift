@@ -11,12 +11,17 @@ import UIKit
 
 final class Assembly {
     static let assembler: Assembly = .init()
+    let favoritesService: FavoriteServiceProtocol = FavoriteLocalService()
+
+    
     private init() {}
     
     private lazy var network: NetworkService = Network()
-    private lazy var stocksService: StocksServiceProtocol = StocksService(client: network)
+
     
-    let favoritesService: FavoriteServiceProtocol = FavoriteLocalService()
+    private lazy var stocksService: StocksServiceProtocol = StocksService(network: network)
+    private lazy var chartsService: ChartsServiceProtocol = ChartsService(network: network)
+    
     
     private func stocksModule() -> UIViewController {
         let presenter = StocksPresenter(service: stocksService)
@@ -25,28 +30,35 @@ final class Assembly {
         return view
     }
     
+    private func favoriteModule() -> UIViewController {
+        let presenter = FavoritePresenter(service: stocksService)
+        let favoritesVC = FavoriteViewController(presenter: presenter)
+        presenter.view = favoritesVC
+        return favoritesVC
+    }
+    
     func tabBarController() -> UIViewController {
-        let tabbar = UITabBarController()
+        let tabBar = UITabBarController()
         
         let stocksVC = UINavigationController(rootViewController: stocksModule())
         stocksVC.tabBarItem = UITabBarItem(title: "Stocks", image: UIImage(named: "diagram"), tag: 0)
         
-        let favoriteVC = UINavigationController(rootViewController: stocksModule())
+        let favoriteVC = UINavigationController(rootViewController: favoriteModule())
         favoriteVC.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: "favorite"), tag: 1)
         
         let searchVC = UINavigationController(rootViewController: stocksModule())
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search") , tag: 2)
         
-        tabbar.viewControllers = [stocksVC, favoriteVC, searchVC]
-        tabbar.tabBarItem.imageInsets = .init(top: 5, left: 0, bottom: -5, right: 0)
-        tabbar.tabBar.barTintColor = .backgroundGray
-        tabbar.tabBar.backgroundColor = .backgroundGray
-        return tabbar
+        tabBar.viewControllers = [stocksVC, favoriteVC, searchVC]
+        tabBar.tabBarItem.imageInsets = .init(top: 5, left: 0, bottom: -5, right: 0)
+        tabBar.tabBar.barTintColor = .backgroundGray
+        tabBar.tabBar.backgroundColor = .backgroundGray
+        return tabBar
     }
     
     func detailVC(for model: StockModelProtocol) -> UIViewController {
-        let presenter = DetailStockPresenter(model: model, service: stocksService)
-        let view = DetailStockViewController(presenter: presenter)
+        let presenter = StockDetailPresenter(model: model, service: chartsService)
+        let view = StockDetailViewController(presenter: presenter)
         presenter.view = view
         return view
     }

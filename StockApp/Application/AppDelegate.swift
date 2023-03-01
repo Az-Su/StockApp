@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = Assembly.assembler.tabBarController()
         window.makeKeyAndVisible()
-        self.window = window
         
+        self.window = window
         return true
     }
 }
