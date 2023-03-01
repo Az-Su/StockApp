@@ -14,7 +14,18 @@ final class StockDetailViewController: UIViewController {
         return view
     }()
     
+    private lazy var chartsContainerView: ChartsContainerView = {
+        let view = ChartsContainerView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private let presenter: StockDetailPresenterProtocol
+    
+    override var hidesBottomBarWhenPushed: Bool {
+        get { true }
+        set { super.hidesBottomBarWhenPushed = newValue }
+    }
     
     init(presenter: StockDetailPresenterProtocol) {
         self.presenter = presenter
@@ -29,15 +40,31 @@ final class StockDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         setupView()
+        setupConstraints()
         setupNavigationBar()
         setupFavoriteButton()
         presenter.loadView()
     }
     
+    
+}
+
+//MARK: - Setup methods
+
+private extension StockDetailViewController {
+    
     private func setupView() {
         view.backgroundColor = .white
+        view.addSubview(chartsContainerView)
+    }
+    
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            chartsContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            chartsContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            chartsContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150)
+        ])
     }
     
     private func setupFavoriteButton() {
@@ -60,6 +87,7 @@ final class StockDetailViewController: UIViewController {
         navigationItem.leftBarButtonItem = backButton
     }
 }
+
 
 //MARK: - Button Actions
 

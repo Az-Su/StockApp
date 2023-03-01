@@ -16,6 +16,9 @@
 		C01391EC29AB56ED008B74F8 /* DetailTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01391EB29AB56ED008B74F8 /* DetailTitleView.swift */; };
 		C01391F129AB59C0008B74F8 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01391F029AB59C0008B74F8 /* FavoriteViewController.swift */; };
 		C01391F329AB5A5B008B74F8 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01391F229AB5A5B008B74F8 /* FavoritePresenter.swift */; };
+		C01391F529AB7378008B74F8 /* ChartsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01391F429AB7378008B74F8 /* ChartsContainerView.swift */; };
+		C013920029AB903A008B74F8 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = C01391FF29AB903A008B74F8 /* Algorithms */; };
+		C013920329AB906A008B74F8 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = C013920229AB906A008B74F8 /* Charts */; };
 		C028A05B298158300012CE9B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A058298158300012CE9B /* Router.swift */; };
 		C028A05C298158300012CE9B /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A059298158300012CE9B /* HTTPMethod.swift */; };
 		C028A05D298158300012CE9B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C028A05A298158300012CE9B /* NetworkError.swift */; };
@@ -51,6 +54,7 @@
 		C01391EB29AB56ED008B74F8 /* DetailTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTitleView.swift; sourceTree = "<group>"; };
 		C01391F029AB59C0008B74F8 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		C01391F229AB5A5B008B74F8 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
+		C01391F429AB7378008B74F8 /* ChartsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsContainerView.swift; sourceTree = "<group>"; };
 		C028A058298158300012CE9B /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		C028A059298158300012CE9B /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		C028A05A298158300012CE9B /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C013920029AB903A008B74F8 /* Algorithms in Frameworks */,
+				C013920329AB906A008B74F8 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +139,7 @@
 			children = (
 				C01391BB299E3F08008B74F8 /* StockDetailViewController.swift */,
 				C01391EB29AB56ED008B74F8 /* DetailTitleView.swift */,
+				C01391F429AB7378008B74F8 /* ChartsContainerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -345,6 +352,10 @@
 			dependencies = (
 			);
 			name = StockApp;
+			packageProductDependencies = (
+				C01391FF29AB903A008B74F8 /* Algorithms */,
+				C013920229AB906A008B74F8 /* Charts */,
+			);
 			productName = StockApp;
 			productReference = C0D0949F29743373008359A4 /* StockApp.app */;
 			productType = "com.apple.product-type.application";
@@ -373,6 +384,10 @@
 				Base,
 			);
 			mainGroup = C0D0949629743373008359A4;
+			packageReferences = (
+				C01391FE29AB903A008B74F8 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				C013920129AB906A008B74F8 /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = C0D094A029743373008359A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -405,6 +420,7 @@
 			files = (
 				C08A8A47298FE0F50004D152 /* StockModel.swift in Sources */,
 				C0C24DC9298BD086008E285A /* StocksPresenter.swift in Sources */,
+				C01391F529AB7378008B74F8 /* ChartsContainerView.swift in Sources */,
 				C0C24DB0298AC6F1008E285A /* StockResponse.swift in Sources */,
 				C07E5E922989B624004B2654 /* NetworkService.swift in Sources */,
 				C01391C2299E5686008B74F8 /* FileManagerFavoriteService.swift in Sources */,
@@ -636,6 +652,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C01391FE29AB903A008B74F8 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		C013920129AB906A008B74F8 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C01391FF29AB903A008B74F8 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C01391FE29AB903A008B74F8 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
+		C013920229AB906A008B74F8 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C013920129AB906A008B74F8 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C0D0949729743373008359A4 /* Project object */;
 }
