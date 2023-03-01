@@ -94,17 +94,20 @@ private extension StockDetailViewController {
     }
     
     private func setupConstraints() {
+        // ChartsContainerView Constraints
         NSLayoutConstraint.activate([
             chartsContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             chartsContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             chartsContainerView.topAnchor.constraint(equalTo: priceStackView.bottomAnchor)
         ])
         
+        // PriceStackView Constraints
         NSLayoutConstraint.activate([
             priceStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             priceStackView.bottomAnchor.constraint(equalTo: chartsContainerView.topAnchor)
         ])
         
+        // BuyButton Constraints
         NSLayoutConstraint.activate([
             buyButton.topAnchor.constraint(equalTo: chartsContainerView.bottomAnchor,constant: 50),
             buyButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -20),
@@ -135,7 +138,6 @@ private extension StockDetailViewController {
     }
 }
 
-
 //MARK: - Button Actions
 
 extension StockDetailViewController {
@@ -159,6 +161,8 @@ extension StockDetailViewController {
     }
 }
 
+//MARK: - Update Chart methods
+
 extension StockDetailViewController: StockDetailViewProtocol {    
     func updateView(withChartModel detailModel: DetailModel) {
         chartsContainerView.configure(with: detailModel)
@@ -173,6 +177,6 @@ extension StockDetailViewController: StockDetailViewProtocol {
     }
     
     func updateView(withError message: String) {
-        
+        print(message)
     }
 }

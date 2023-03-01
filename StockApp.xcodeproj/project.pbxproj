@@ -126,8 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				C01391B8299E3DE8008B74F8 /* Model */,
-				C01391BA299E3DFB008B74F8 /* Presenter */,
 				C01391B9299E3DEF008B74F8 /* View */,
+				C01391BA299E3DFB008B74F8 /* Presenter */,
 				C01391E829A68696008B74F8 /* Service */,
 			);
 			path = StockDetailScreen;

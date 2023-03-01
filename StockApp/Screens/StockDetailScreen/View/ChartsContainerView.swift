@@ -76,8 +76,6 @@ extension ChartsContainerView {
         addSubview(chartsView)
         addSubview(buttonStackView)
         chartsView.addSubview(loader)
-        
-        addButtons(for: ["W", "M", "6M", "Y"])
     }
     
     private func setupConstraints() {
@@ -157,7 +155,7 @@ extension ChartsContainerView {
         lineDataSet.circleHoleRadius = 2.0
         lineDataSet.mode = .cubicBezier
         lineDataSet.lineWidth = 2
-        lineDataSet.setColor(.black)
+        lineDataSet.setColor(.gray)
         lineDataSet.drawHorizontalHighlightIndicatorEnabled = false
         lineDataSet.drawVerticalHighlightIndicatorEnabled = false
         lineDataSet.fill = LinearGradientFill(gradient: gradient!, angle: 90.0)
