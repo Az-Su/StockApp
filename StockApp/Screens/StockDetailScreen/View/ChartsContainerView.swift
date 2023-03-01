@@ -155,7 +155,7 @@ extension ChartsContainerView {
         lineDataSet.circleHoleRadius = 2.0
         lineDataSet.mode = .cubicBezier
         lineDataSet.lineWidth = 2
-        lineDataSet.setColor(.gray)
+        lineDataSet.setColor(.black)
         lineDataSet.drawHorizontalHighlightIndicatorEnabled = false
         lineDataSet.drawVerticalHighlightIndicatorEnabled = false
         lineDataSet.fill = LinearGradientFill(gradient: gradient!, angle: 90.0)
