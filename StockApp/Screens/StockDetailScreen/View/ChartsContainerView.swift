@@ -102,7 +102,7 @@ extension ChartsContainerView {
             yValues.append(dataEntry)
         }
     
-        let lineDataSet = lineCharDataSet(with: yValues)
+        let lineDataSet = lineChartDataSet(with: yValues)
         let data = LineChartData(dataSets: [lineDataSet])
         data.setDrawValues(false)
         
@@ -110,7 +110,8 @@ extension ChartsContainerView {
         chartsView.animate(xAxisDuration: 1)
     }
     
-    private func lineCharDataSet(with entries: [ChartDataEntry]) -> LineChartDataSet {
+    //LineChart configurations
+    private func lineChartDataSet(with entries: [ChartDataEntry]) -> LineChartDataSet {
         let lineDataSet = LineChartDataSet(entries: entries, label: "")
         let gradientColors = [UIColor.chartBottomColor.cgColor,
                               UIColor.chartTopColor.cgColor] as CFArray

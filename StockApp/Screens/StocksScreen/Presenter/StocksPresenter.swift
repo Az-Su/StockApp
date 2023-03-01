@@ -42,11 +42,11 @@ final class StocksPresenter: StocksPresenterProtocol {
     func loadView() {
         startFavoritesNotificationObserving()
         
-        // Показываем лоадер и идем в сеть
+        // Show loader
         view?.updateView(withLoader: true)
         
         service.getStocks { [weak self] result in
-            //Возвращаямся с данными и убираем лоадер
+            //Come back with data and hide loader
             self?.view?.updateView(withLoader: false)
             
             switch result {
