@@ -11,12 +11,17 @@ import UIKit
 
 final class Assembly {
     static let assembler: Assembly = .init()
+    let favoritesService: FavoriteServiceProtocol = FavoriteLocalService()
+
+    
     private init() {}
     
     private lazy var network: NetworkService = Network()
-    private lazy var stocksService: StocksServiceProtocol = StocksService(client: network)
+
     
-    let favoritesService: FavoriteServiceProtocol = FavoriteLocalService()
+    private lazy var stocksService: StocksServiceProtocol = StocksService(network: network)
+    private lazy var chartsService: ChartsServiceProtocol = ChartsService(network: network)
+    
     
     private func stocksModule() -> UIViewController {
         let presenter = StocksPresenter(service: stocksService)
@@ -33,7 +38,7 @@ final class Assembly {
     }
     
     func tabBarController() -> UIViewController {
-        let tabbar = UITabBarController()
+        let tabBar = UITabBarController()
         
         let stocksVC = UINavigationController(rootViewController: stocksModule())
         stocksVC.tabBarItem = UITabBarItem(title: "Stocks", image: UIImage(named: "diagram"), tag: 0)
@@ -44,15 +49,15 @@ final class Assembly {
         let searchVC = UINavigationController(rootViewController: stocksModule())
         searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search") , tag: 2)
         
-        tabbar.viewControllers = [stocksVC, favoriteVC, searchVC]
-        tabbar.tabBarItem.imageInsets = .init(top: 5, left: 0, bottom: -5, right: 0)
-        tabbar.tabBar.barTintColor = .backgroundGray
-        tabbar.tabBar.backgroundColor = .backgroundGray
-        return tabbar
+        tabBar.viewControllers = [stocksVC, favoriteVC, searchVC]
+        tabBar.tabBarItem.imageInsets = .init(top: 5, left: 0, bottom: -5, right: 0)
+        tabBar.tabBar.barTintColor = .backgroundGray
+        tabBar.tabBar.backgroundColor = .backgroundGray
+        return tabBar
     }
     
     func detailVC(for model: StockModelProtocol) -> UIViewController {
-        let presenter = StockDetailPresenter(model: model, service: stocksService)
+        let presenter = StockDetailPresenter(model: model, service: chartsService)
         let view = StockDetailViewController(presenter: presenter)
         presenter.view = view
         return view

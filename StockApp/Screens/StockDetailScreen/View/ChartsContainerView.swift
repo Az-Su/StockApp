@@ -9,6 +9,8 @@ import UIKit
 import Charts
 
 final class ChartsContainerView: UIView {
+    private var model: DetailModel?
+    
     private lazy var chartsView: LineChartView = {
         let view = LineChartView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -35,14 +37,35 @@ final class ChartsContainerView: UIView {
         return stackView
     }()
     
+    private lazy var loader: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setupViews()
         setupConstraints()
+        setupMarker()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(with isLoading: Bool) {
+        isLoading ? loader.startAnimating() : loader.stopAnimating()
+        loader.isHidden = !isLoading
+        buttonStackView.isHidden = isLoading
+    }
+    
+    func configure(with model: DetailModel) {
+        self.model = model
+        addButtons(for: model.periods.map {$0.name})
+        setCharts(with: model.periods.first?.prices)
+        periodButtonTapped(sender: buttonStackView.subviews.first as? UIButton ?? UIButton())
     }
 }
 
@@ -52,6 +75,7 @@ extension ChartsContainerView {
     private func setupViews() {
         addSubview(chartsView)
         addSubview(buttonStackView)
+        chartsView.addSubview(loader)
         
         addButtons(for: ["W", "M", "6M", "Y"])
     }
@@ -73,6 +97,12 @@ extension ChartsContainerView {
             buttonStackView.heightAnchor.constraint(equalToConstant: 44),
             buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+        
+        // Loader Constraints
+        NSLayoutConstraint.activate([
+            loader.centerXAnchor.constraint(equalTo: chartsView.centerXAnchor),
+            loader.centerYAnchor.constraint(equalTo: chartsView.centerYAnchor)
+        ])
     }
     
     private func addButtons(for titles: [String]) {
@@ -88,7 +118,6 @@ extension ChartsContainerView {
             button.addTarget(self, action:#selector(periodButtonTapped), for: .touchUpInside)
             buttonStackView.addArrangedSubview(button)
         }
-        setCharts(with: [0, 1 ,2, 6, 10, 12, 2, 4, 1])
     }
     
     private func setCharts(with prices: [Double]?) {
@@ -135,6 +164,12 @@ extension ChartsContainerView {
         lineDataSet.drawFilledEnabled = true
         return lineDataSet
     }
+    
+    private func setupMarker() {
+        let marker = ChartMarker()
+        chartsView.marker = marker
+        marker.chartView = chartsView
+    }
 }
 
 //MARK: - Button Actions
@@ -148,8 +183,8 @@ extension ChartsContainerView {
         sender.backgroundColor = .black
         sender.setTitleColor(.white, for: .normal)
         
-//        guard let model = model else { return }
-//        let period = model.periods[sender.tag]
-//        setCharts(with: period.prices)
+        guard let model = model else { return }
+        let period = model.periods[sender.tag]
+        setCharts(with: period.prices)
     }
 }

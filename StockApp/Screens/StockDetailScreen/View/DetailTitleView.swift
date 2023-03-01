@@ -8,12 +8,12 @@
 import UIKit
 
 final class DetailTitleView: UIView {
-    struct TilteModel {
+    struct TitleModel {
         let symbol: String
         let name: String
         
-        static func from(stockModel model: StockModelProtocol) -> TilteModel {
-            TilteModel(symbol: model.symbol, name: model.name)
+        static func from(stockModel model: StockModelProtocol) -> TitleModel {
+            TitleModel(symbol: model.symbol, name: model.name)
         }
     }
     
@@ -41,7 +41,7 @@ final class DetailTitleView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with model: TilteModel) {
+    func configure(with model: TitleModel) {
         symbolLabel.text = model.symbol.uppercased()
         nameLabel.text = model.name
     }
