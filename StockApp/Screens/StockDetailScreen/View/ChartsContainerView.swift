@@ -55,12 +55,14 @@ final class ChartsContainerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Loader configuration
     func configure(with isLoading: Bool) {
         isLoading ? loader.startAnimating() : loader.stopAnimating()
         loader.isHidden = !isLoading
         buttonStackView.isHidden = isLoading
     }
     
+    ///DetailModel configuration
     func configure(with model: DetailModel) {
         self.model = model
         addButtons(for: model.periods.map {$0.name})
@@ -79,25 +81,19 @@ extension ChartsContainerView {
     }
     
     private func setupConstraints() {
-        // ChartsView Constraints
+        
         NSLayoutConstraint.activate([
             chartsView.leadingAnchor.constraint(equalTo: leadingAnchor),
             chartsView.trailingAnchor.constraint(equalTo: trailingAnchor),
             chartsView.topAnchor.constraint(equalTo: topAnchor),
-            chartsView.heightAnchor.constraint(equalTo: chartsView.widthAnchor, multiplier: 26/36)
-        ])
-        
-        // ButtonStackView Constraints
-        NSLayoutConstraint.activate([
+            chartsView.heightAnchor.constraint(equalTo: chartsView.widthAnchor, multiplier: 26/36),
+            
             buttonStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             buttonStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             buttonStackView.topAnchor.constraint(equalTo: chartsView.bottomAnchor, constant: 40),
             buttonStackView.heightAnchor.constraint(equalToConstant: 44),
-            buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-        
-        // Loader Constraints
-        NSLayoutConstraint.activate([
+            buttonStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
             loader.centerXAnchor.constraint(equalTo: chartsView.centerXAnchor),
             loader.centerYAnchor.constraint(equalTo: chartsView.centerYAnchor)
         ])

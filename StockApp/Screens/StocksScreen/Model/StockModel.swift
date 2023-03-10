@@ -16,7 +16,6 @@ protocol StockModelProtocol {
     var price: String { get }
     var change: String { get }
     var changeColor: UIColor { get }
-    
     var isFavorite: Bool { get set }
     
     func setFavorite()

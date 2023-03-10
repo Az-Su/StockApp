@@ -80,6 +80,7 @@ final class SearchView: UIStackView {
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
+        stackView.isHidden = true
         return stackView
     }()
     
@@ -111,7 +112,6 @@ extension SearchView {
         
         addArrangedSubview(itemsView)
         addArrangedSubview(infoStackView)
-        infoStackView.isHidden = true
     }
     
     private func setupConstraints() {
@@ -144,10 +144,11 @@ extension SearchView {
 
 extension SearchView {
     @objc func editingBegan(_ textField: UITextField) {
-        infoStackView.isHidden = false
-        searchButton.isHidden = true
         backButton.isHidden = false
         clearButton.isHidden = false
+        infoStackView.isHidden = false
+        
+        searchButton.isHidden = true
     }
     
     @objc private func clearButtonTapped() {

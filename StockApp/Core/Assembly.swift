@@ -12,7 +12,6 @@ import UIKit
 final class Assembly {
     static let assembler: Assembly = .init()
     let favoritesService: FavoriteServiceProtocol = FavoriteLocalService()
-
     
     private init() {}
     

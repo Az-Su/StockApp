@@ -34,7 +34,8 @@ final class DetailTitleView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setupSubviews()
+        setupViews()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -45,10 +46,17 @@ final class DetailTitleView: UIView {
         symbolLabel.text = model.symbol.uppercased()
         nameLabel.text = model.name
     }
-    
-    private func setupSubviews() {
+}
+
+//MARK: - Setup views and constraints methods
+
+private extension DetailTitleView {
+    private func setupViews() {
         addSubview(symbolLabel)
         addSubview(nameLabel)
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             symbolLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor),
             symbolLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor),

@@ -40,9 +40,8 @@ final class SearchViewController: UIViewController {
     }()
     
     private lazy var searchesStackView: UIStackView = {
-        let stackView = UIStackView()
+        let stackView = UIStackView(arrangedSubviews: [collectionLabel, clearSearchesButton])
         stackView.axis = .horizontal
-        //        stackView.alignment = .fill
         stackView.distribution = .equalSpacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -85,73 +84,6 @@ final class SearchViewController: UIViewController {
         setupConstraints()
         presenter.loadView()
     }
-    
-    private func showError(_ message: String) {
-        // show error
-    }
-}
-
-extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter.itemCount
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as? StockCell else { return UITableViewCell() }
-        cell.setBackgroundColor(for: indexPath.row)
-        cell.configure(with: presenter.model(for: indexPath))
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentModel = presenter.model(for: indexPath)
-        let detailStockVC = Assembly.assembler.detailVC(for: currentModel)
-        navigationController?.pushViewController(detailStockVC, animated: true)
-    }
-}
-
-extension SearchViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        presenter.savedSearches = UserDefaults.standard.array(forKey: "savedSearches") as? [String] ?? []
-        
-        return presenter.savedSearches.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RequestSearch", for: indexPath) as! RequestSearch
-        
-        cell.textLabel.text = presenter.savedSearches[indexPath.row]
-        
-        return cell
-    }
-}
-
-extension SearchViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? RequestSearch else { return }
-        
-        searchView.searchTextField.text = cell.textLabel.text
-        
-        editingBegan(searchView.searchTextField)
-    }
-}
-
-extension SearchViewController: StocksViewProtocol {
-    func updateView() {
-        tableView.reloadData()
-    }
-    
-    func updateView(withLoader isLoading: Bool) {
-        // show or hide loader
-    }
-    
-    func updateView(withError message: String) {
-        // show error message
-    }
-    
-    func updateCell(for indexPath: IndexPath) {
-        tableView.reloadRows(at: [indexPath], with: .none)
-    }
 }
 
 //MARK: - Setup views and constraints methods
@@ -167,9 +99,6 @@ private extension SearchViewController {
         view.addSubview(tableView)
         
         view.addSubview(searchesStackView)
-        searchesStackView.addArrangedSubview(collectionLabel)
-        searchesStackView.addArrangedSubview(clearSearchesButton)
-        
         view.addSubview(collectionView)
     }
     
@@ -198,23 +127,77 @@ private extension SearchViewController {
     private func saveSearchText() {
         guard let searchTerm = searchView.searchTextField.text, !searchTerm.isEmpty else { return }
         
-        if let value = UserDefaults.standard.object(forKey: "savedSearches") as? String {
-            if value == searchTerm {
-                // Data in UserDefaults matches the variable
-                print("Data in UserDefaults matches the variable")
-            } else {
-                // Data in UserDefaults does not match the variable
-                print("Data in UserDefaults does not match the variable")
-            }
-        } else {
-            // Data not found in UserDefaults
-            print("Data not found in UserDefaults")
-        }
-        
         presenter.savedSearches.append(searchTerm)
         
         UserDefaults.standard.set(presenter.savedSearches, forKey: "savedSearches")
         collectionView.reloadData()
+    }
+}
+
+//MARK: - TableView datasource and delegete
+
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        presenter.itemCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as? StockCell else { return UITableViewCell() }
+        cell.setBackgroundColor(for: indexPath.row)
+        cell.configure(with: presenter.model(for: indexPath))
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentModel = presenter.model(for: indexPath)
+        let detailStockVC = Assembly.assembler.detailVC(for: currentModel)
+        navigationController?.pushViewController(detailStockVC, animated: true)
+    }
+}
+
+//MARK: - CollectionView datasource and delegete
+
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        presenter.savedSearches = UserDefaults.standard.array(forKey: "savedSearches") as? [String] ?? []
+        
+        return presenter.savedSearches.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RequestSearch", for: indexPath) as! RequestSearch
+        
+        cell.textLabel.text = presenter.savedSearches[indexPath.row]
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? RequestSearch else { return }
+        
+        searchView.searchTextField.text = cell.textLabel.text
+        
+        editingBegan(searchView.searchTextField)
+    }
+}
+
+//MARK: - UpdateView functions from StocksViewProtocol
+
+extension SearchViewController: StocksViewProtocol {
+    func updateView() {
+        tableView.reloadData()
+    }
+    
+    func updateView(withLoader isLoading: Bool) {
+        // show or hide loader
+    }
+    
+    func updateView(withError message: String) {
+        // show error message
+    }
+    
+    func updateCell(for indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }
 

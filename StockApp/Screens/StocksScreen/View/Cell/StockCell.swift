@@ -15,7 +15,6 @@ final class StockCell: UITableViewCell {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "YNDX")
         image.layer.cornerRadius = 12
         image.clipsToBounds = true
         return image
@@ -121,8 +120,7 @@ final class StockCell: UITableViewCell {
 
 //MARK: - Setup views and constraints methods
 
-extension StockCell {
-    
+private extension StockCell {
     private func setupViews() {
         selectionStyle = .none
         

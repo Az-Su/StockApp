@@ -94,21 +94,14 @@ private extension StockDetailViewController {
     }
     
     private func setupConstraints() {
-        // ChartsContainerView Constraints
         NSLayoutConstraint.activate([
             chartsContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             chartsContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            chartsContainerView.topAnchor.constraint(equalTo: priceStackView.bottomAnchor)
-        ])
-        
-        // PriceStackView Constraints
-        NSLayoutConstraint.activate([
+            chartsContainerView.topAnchor.constraint(equalTo: priceStackView.bottomAnchor),
+            
             priceStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            priceStackView.bottomAnchor.constraint(equalTo: chartsContainerView.topAnchor)
-        ])
-        
-        // BuyButton Constraints
-        NSLayoutConstraint.activate([
+            priceStackView.bottomAnchor.constraint(equalTo: chartsContainerView.topAnchor),
+            
             buyButton.topAnchor.constraint(equalTo: chartsContainerView.bottomAnchor,constant: 50),
             buyButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor,constant: -20),
             buyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 16),
