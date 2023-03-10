@@ -36,7 +36,6 @@ final class StocksViewController: UIViewController {
         
         setupViews()
         setupConstraints()
-        
         presenter.loadView()
     }
 }

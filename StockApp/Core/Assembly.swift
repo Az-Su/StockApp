@@ -37,17 +37,25 @@ final class Assembly {
         return favoritesVC
     }
     
+    private func searchModule() -> UIViewController {
+        let searchService = SearchService(service: stocksService)
+        let presenter = SearchPersenter(service: searchService)
+        let searchVC = SearchViewController(presenter: presenter)
+        presenter.viewController = searchVC
+        return searchVC
+    }
+    
     func tabBarController() -> UIViewController {
         let tabBar = UITabBarController()
         
         let stocksVC = UINavigationController(rootViewController: stocksModule())
-        stocksVC.tabBarItem = UITabBarItem(title: "Stocks", image: UIImage(named: "diagram"), tag: 0)
+        stocksVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "diagram"), tag: 0)
         
         let favoriteVC = UINavigationController(rootViewController: favoriteModule())
-        favoriteVC.tabBarItem = UITabBarItem(title: "Favorite", image: UIImage(named: "favorite"), tag: 1)
+        favoriteVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "favorite"), tag: 1)
         
-        let searchVC = UINavigationController(rootViewController: stocksModule())
-        searchVC.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "search") , tag: 2)
+        let searchVC = UINavigationController(rootViewController: searchModule())
+        searchVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "search") , tag: 2)
         
         tabBar.viewControllers = [stocksVC, favoriteVC, searchVC]
         tabBar.tabBarItem.imageInsets = .init(top: 5, left: 0, bottom: -5, right: 0)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class StockCell: UITableViewCell {
     private var favoriteAction: (() -> Void)?
@@ -105,6 +106,7 @@ final class StockCell: UITableViewCell {
     }
     
     func configure(with model: StockModelProtocol){
+        iconView.setImage(from: model.iconURL, placeHolder: UIImage(named: "YNDX"))
         symbolLabel.text = model.symbol.uppercased()
         companyLabel.text = model.name
         priceLabel.text = model.price
