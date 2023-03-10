@@ -31,6 +31,13 @@
 		C048751A297A9E7800B3B653 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0487519297A9E7800B3B653 /* Montserrat-Medium.ttf */; };
 		C048751C297A9E8B00B3B653 /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048751B297A9E8B00B3B653 /* UIFont+Ext.swift */; };
 		C048751F297AA02400B3B653 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C048751E297AA02400B3B653 /* UIColor+Ext.swift */; };
+		C069761B29B86ECD00E79A76 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C069761A29B86ECD00E79A76 /* Kingfisher */; };
+		C069761D29B86FD600E79A76 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C069761C29B86FD600E79A76 /* UIImageView+Ext.swift */; };
+		C069762329B873EA00E79A76 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C069762229B873EA00E79A76 /* SearchViewController.swift */; };
+		C069762529B8755000E79A76 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C069762429B8755000E79A76 /* SearchView.swift */; };
+		C069762729B8863200E79A76 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C069762629B8863200E79A76 /* SearchPresenter.swift */; };
+		C069762929B8865D00E79A76 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C069762829B8865D00E79A76 /* SearchService.swift */; };
+		C069762B29B8879F00E79A76 /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C069762A29B8879F00E79A76 /* SearchRequest.swift */; };
 		C07E5E922989B624004B2654 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E5E912989B624004B2654 /* NetworkService.swift */; };
 		C08A8A47298FE0F50004D152 /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8A46298FE0F50004D152 /* StockModel.swift */; };
 		C08A8A49298FE1530004D152 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08A8A48298FE1530004D152 /* Double+Ext.swift */; };
@@ -70,6 +77,12 @@
 		C0487519297A9E7800B3B653 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		C048751B297A9E8B00B3B653 /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 		C048751E297AA02400B3B653 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		C069761C29B86FD600E79A76 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		C069762229B873EA00E79A76 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C069762429B8755000E79A76 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		C069762629B8863200E79A76 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		C069762829B8865D00E79A76 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
+		C069762A29B8879F00E79A76 /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		C07E5E912989B624004B2654 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C08A8A46298FE0F50004D152 /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
 		C08A8A48298FE1530004D152 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
@@ -93,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C069761B29B86ECD00E79A76 /* Kingfisher in Frameworks */,
 				C013920029AB903A008B74F8 /* Algorithms in Frameworks */,
 				C013920329AB906A008B74F8 /* Charts in Frameworks */,
 			);
@@ -214,6 +228,42 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		C069761E29B8724800E79A76 /* StockSearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C069762029B8725E00E79A76 /* View */,
+				C069762129B8726800E79A76 /* Presenter */,
+				C069761F29B8725600E79A76 /* Service */,
+			);
+			path = StockSearchScreen;
+			sourceTree = "<group>";
+		};
+		C069761F29B8725600E79A76 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C069762829B8865D00E79A76 /* SearchService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C069762029B8725E00E79A76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C069762229B873EA00E79A76 /* SearchViewController.swift */,
+				C069762429B8755000E79A76 /* SearchView.swift */,
+				C069762A29B8879F00E79A76 /* SearchRequest.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C069762129B8726800E79A76 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C069762629B8863200E79A76 /* SearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		C07E5E932989BCB1004B2654 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +300,7 @@
 				C048751B297A9E8B00B3B653 /* UIFont+Ext.swift */,
 				C048751E297AA02400B3B653 /* UIColor+Ext.swift */,
 				C08A8A48298FE1530004D152 /* Double+Ext.swift */,
+				C069761C29B86FD600E79A76 /* UIImageView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -257,6 +308,7 @@
 		C092564A297992EC00C342B1 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C069761E29B8724800E79A76 /* StockSearchScreen */,
 				C01391ED29AB599F008B74F8 /* StockFavoriteScreen */,
 				C01391B7299E3DC3008B74F8 /* StockDetailScreen */,
 				C092564B297992F800C342B1 /* StocksScreen */,
@@ -364,6 +416,7 @@
 			packageProductDependencies = (
 				C01391FF29AB903A008B74F8 /* Algorithms */,
 				C013920229AB906A008B74F8 /* Charts */,
+				C069761A29B86ECD00E79A76 /* Kingfisher */,
 			);
 			productName = StockApp;
 			productReference = C0D0949F29743373008359A4 /* StockApp.app */;
@@ -396,6 +449,7 @@
 			packageReferences = (
 				C01391FE29AB903A008B74F8 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				C013920129AB906A008B74F8 /* XCRemoteSwiftPackageReference "Charts" */,
+				C069761929B86ECD00E79A76 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = C0D094A029743373008359A4 /* Products */;
 			projectDirPath = "";
@@ -437,8 +491,11 @@
 				C0D094A729743373008359A4 /* StocksViewController.swift in Sources */,
 				C01391BC299E3F08008B74F8 /* StockDetailViewController.swift in Sources */,
 				C0C24DC5298AF550008E285A /* Assembly.swift in Sources */,
+				C069762529B8755000E79A76 /* SearchView.swift in Sources */,
+				C069762329B873EA00E79A76 /* SearchViewController.swift in Sources */,
 				C08A8A49298FE1530004D152 /* Double+Ext.swift in Sources */,
 				C01391BE299E3F68008B74F8 /* StockDetailPresenter.swift in Sources */,
+				C069762729B8863200E79A76 /* SearchPresenter.swift in Sources */,
 				C09256492979927800C342B1 /* NSObject+Ext.swift in Sources */,
 				C0D094A329743373008359A4 /* AppDelegate.swift in Sources */,
 				C01391C0299E550F008B74F8 /* FavoriteUpdateService.swift in Sources */,
@@ -447,7 +504,9 @@
 				C01391F129AB59C0008B74F8 /* FavoriteViewController.swift in Sources */,
 				C013920529AF6928008B74F8 /* DetailModel.swift in Sources */,
 				C01391EA29A686A2008B74F8 /* ChartsResponce.swift in Sources */,
+				C069761D29B86FD600E79A76 /* UIImageView+Ext.swift in Sources */,
 				C028A05B298158300012CE9B /* Router.swift in Sources */,
+				C069762B29B8879F00E79A76 /* SearchRequest.swift in Sources */,
 				C01391EC29AB56ED008B74F8 /* DetailTitleView.swift in Sources */,
 				C028A05C298158300012CE9B /* HTTPMethod.swift in Sources */,
 				C048751F297AA02400B3B653 /* UIColor+Ext.swift in Sources */,
@@ -455,6 +514,7 @@
 				C0C24DAB298AC528008E285A /* StocksService.swift in Sources */,
 				C028A05D298158300012CE9B /* NetworkError.swift in Sources */,
 				C048751C297A9E8B00B3B653 /* UIFont+Ext.swift in Sources */,
+				C069762929B8865D00E79A76 /* SearchService.swift in Sources */,
 				C01391F329AB5A5B008B74F8 /* FavoritePresenter.swift in Sources */,
 				C09256442978768400C342B1 /* StockCell.swift in Sources */,
 			);
@@ -682,6 +742,14 @@
 				kind = branch;
 			};
 		};
+		C069761929B86ECD00E79A76 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -694,6 +762,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C013920129AB906A008B74F8 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
+		};
+		C069761A29B86ECD00E79A76 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C069761929B86ECD00E79A76 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
