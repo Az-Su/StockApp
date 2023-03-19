@@ -214,6 +214,7 @@ private extension SearchViewController {
         self.collectionLabel.isHidden = false
         self.searchView.searchButton.isHidden = false
         self.searchesStackView.isHidden = false
+        self.clearSearchesButton.isHidden = false
         
         saveSearchText()
         self.view.endEditing(true)
