@@ -42,7 +42,7 @@ This project is licensed under the [MIT License](<https://opensource.org/license
 
 ## Demonstration
 
-![Simulator Screen Recording - iPhone 13 - 2022-06-17 at 21 47 04](https://user-images.githubusercontent.com/55410394/174334160-db5061be-0757-49b8-aeb3-e25f53a5820b.gif)
+![Demo](demo.gif)
 
 ## Design
 
