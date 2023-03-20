@@ -1,8 +1,6 @@
 <h1 align="center">
-  :robot: Stock Application :robot:
+  :chart_with_upwards_trend: Stock Application :chart_with_downwards_trend:
 </h1>
-
-# Stock Application
 
 This is my pet project for an iOS stock application. The purpose of this application is to provide real-time updates and analysis of stocks to help users make informed decisions.
 
@@ -16,7 +14,6 @@ To use the Stock Application, simply download the project files and open the Xco
 - User-friendly interface for easy navigation
 - Personalized watchlist to keep track of favorite stocks
 - In-depth analysis of individual stocks
-- News articles related to the stock market
 
 ## Technologies Used
 
@@ -43,11 +40,17 @@ Contributions to this project are welcome! If you have any suggestions or improv
 
 This project is licensed under the [MIT License](<https://opensource.org/licenses/MIT>).
 
-**Mini Demo Project**
-
-
+## Demonstration
 
 ![Simulator Screen Recording - iPhone 13 - 2022-06-17 at 21 47 04](https://user-images.githubusercontent.com/55410394/174334160-db5061be-0757-49b8-aeb3-e25f53a5820b.gif)
+
+## Design
+
+<p align="center">
+<img width="200" alt="Снимок экрана 2022-06-04 в 12 37 14" src="https://user-images.githubusercontent.com/55410394/171987878-8b3bdd28-9ce4-42f4-9e19-d80520e8e6b5.png">
+<img width="215" alt="Снимок экрана 2022-06-04 в 12 37 37" src="https://user-images.githubusercontent.com/55410394/171987885-8393f76d-f66c-4cb2-a5c9-ad2970e070ed.png">
+<img width="227" alt="Снимок экрана 2022-06-04 в 12 37 44" src="https://user-images.githubusercontent.com/55410394/171987886-b3e4184f-8343-4542-9587-155f5076e565.png">
+<img width="215" alt="Снимок экрана 2022-06-04 в 12 37 27" src="https://user-images.githubusercontent.com/55410394/171987883-7b5ff890-8ceb-445f-a649-0f1da7946eec.png">
 
 
 
